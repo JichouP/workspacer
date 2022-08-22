@@ -3,8 +3,12 @@
     windows_subsystem = "windows"
 )]
 
-fn main() {
+use anyhow::Result;
+
+fn main() -> Result<()> {
     tauri::Builder::default()
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
+
+    Ok(())
 }
