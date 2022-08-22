@@ -9,6 +9,8 @@ extern crate tauri;
 use anyhow::Result;
 use tauri::Manager;
 
+mod cmd;
+
 struct AppDir(String);
 
 fn main() -> Result<()> {
@@ -27,6 +29,7 @@ fn main() -> Result<()> {
 
             Ok(())
         })
+        .invoke_handler(generate_handler![cmd::get_stats])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 
