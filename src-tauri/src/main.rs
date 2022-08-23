@@ -5,6 +5,8 @@
 
 #[macro_use]
 extern crate tauri;
+#[macro_use]
+extern crate serde;
 
 use anyhow::Result;
 use tauri::Manager;

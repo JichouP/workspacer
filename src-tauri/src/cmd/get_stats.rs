@@ -1,7 +1,6 @@
 use std::fs;
 
 use languatage::LanguageStat;
-use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Stat {
