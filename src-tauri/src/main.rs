@@ -31,6 +31,7 @@ fn main() -> Result<()> {
         .invoke_handler(generate_handler![
             cmd::get_stats::get_stats,
             cmd::add_workspace::add_workspace,
+            cmd::launch_code::launch_code,
             cmd::remove_workspace::remove_workspace,
         ])
         .run(tauri::generate_context!())
