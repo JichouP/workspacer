@@ -1373,9 +1373,9 @@ dependencies = [
 
 [[package]]
 name = "languatage"
-version = "0.4.0"
+version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8ab53cf7c5aec6da44d11c86449ae221fe3360150a0dff27bc83a377eb4fc5a"
+checksum = "7b7f6381372394f907a2e9d3212a6631f75b7947879a42dacb8ff54a4d11578b"
 dependencies = [
  "anyhow",
  "serde",
