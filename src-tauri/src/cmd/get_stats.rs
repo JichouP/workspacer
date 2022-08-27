@@ -43,8 +43,8 @@ fn is_dot_dir<P: AsRef<Path>>(path: P) -> bool {
 }
 
 #[command]
-pub fn get_stats(workspace_path: String) -> Vec<(String, Vec<Stat>)> {
-    let dirs: Vec<(String, Vec<Stat>)> = fs::read_dir(workspace_path)
+pub fn get_stats(path: String) -> Vec<(String, Vec<Stat>)> {
+    let dirs: Vec<(String, Vec<Stat>)> = fs::read_dir(path)
         .unwrap()
         .filter(|dir| {
             let path = dir.as_ref().unwrap().path();
