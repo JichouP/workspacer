@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "tauri": "tauri dev",
+    "tauri:build": "tauri build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri dev",
-    "tauri:build": "tauri build",
     "lint": "eslint",
     "format": "prettier",
     "typecheck": "tsc --noEmit --project tsconfig.json",
