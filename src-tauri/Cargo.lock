@@ -1373,9 +1373,9 @@ dependencies = [
 
 [[package]]
 name = "languatage"
-version = "0.5.0"
+version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7b7f6381372394f907a2e9d3212a6631f75b7947879a42dacb8ff54a4d11578b"
+checksum = "fa5e4f66913d9d23701b822857aecb4b6116ebeb8b2ccfb1eb97aae5fea7a33e"
 dependencies = [
  "anyhow",
  "serde",
@@ -2505,9 +2505,9 @@ dependencies = [
 
 [[package]]
 name = "serde_yaml"
-version = "0.9.10"
+version = "0.9.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a09f551ccc8210268ef848f0bab37b306e87b85b2e017b899e7fb815f5aed62"
+checksum = "89f31df3f50926cdf2855da5fd8812295c34752cb20438dae42a67f79e021ac3"
 dependencies = [
  "indexmap",
  "itoa 1.0.3",
