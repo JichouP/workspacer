@@ -7,10 +7,13 @@ type Props = {
 
 const AddWorkspaceButton: FC<Props> = () => {
   return (
-    <button className="btn btn-ghost flex w-full flex-row items-center justify-center normal-case">
+    <label
+      htmlFor="add-workspace-modal"
+      className="modal-button btn btn-ghost flex w-full flex-row items-center justify-center normal-case"
+    >
       <AddIcon></AddIcon>
       <span className="m-2 text-lg">Add Workspace</span>
-    </button>
+    </label>
   );
 };
 
