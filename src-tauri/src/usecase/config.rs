@@ -34,6 +34,9 @@ pub fn add_workspace(
     repository: &impl ConfigRepository,
     workspace: PathBuf,
 ) -> Result<Vec<PathBuf>> {
+    if !workspace.exists() {
+        return Err(anyhow::anyhow!("Target directory does not exist"));
+    }
     let mut workspaces = load(repository)?.workspaces;
     workspaces.push(workspace);
     save_workspace(repository, workspaces.clone())?;
