@@ -2,7 +2,11 @@ import { tauri } from '@tauri-apps/api';
 
 export type Stats = [
   string,
-  { lang: string; percentage: number; size: number }[],
+  {
+    lang: 'JavaScript' | 'TypeScript' | 'Vue' | 'Rust' | 'Go';
+    percentage: number;
+    size: number;
+  }[],
 ];
 
 const getStatsCmd = async (path: string): Promise<Stats[]> => {
