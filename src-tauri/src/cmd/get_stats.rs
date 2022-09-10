@@ -48,9 +48,13 @@ fn is_dot_dir<P: AsRef<Path>>(path: P) -> bool {
 }
 
 #[command]
-pub fn get_stats(path: String) -> Vec<(String, Vec<Stat>)> {
-    let dirs: Vec<(String, Vec<Stat>)> = fs::read_dir(path)
-        .unwrap()
+pub fn get_stats(path: String) -> Result<Vec<(String, Vec<Stat>)>, String> {
+    let dirs = match fs::read_dir(path) {
+        Ok(v) => v,
+        Err(e) => return Err(e.to_string()),
+    };
+
+    let dirs = dirs
         .filter(|dir| {
             let path = dir.as_ref().unwrap().path();
             !is_system_dir(&path) && !is_dot_dir(&path)
@@ -68,5 +72,5 @@ pub fn get_stats(path: String) -> Vec<(String, Vec<Stat>)> {
         })
         .collect();
 
-    dirs
+    Ok(dirs)
 }
