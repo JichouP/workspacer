@@ -1,6 +1,6 @@
 import workspacesState from '@/atoms/workspacesState';
-import addWorkspace from '@/cmds/addWorkspace';
-import getWorkspace from '@/cmds/getWorkspace';
+import addWorkspaceCmd from '@/cmds/addWorkspaceCmd';
+import getWorkspaceCmd from '@/cmds/getWorkspaceCmd';
 import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
 
@@ -36,10 +36,13 @@ const AddWorkspaceModal = () => {
               onClick={async () => {
                 const path = inputRef.current?.value;
                 if (!path) return;
-                addWorkspace(path)
-                  .then(() => getWorkspace())
-                  .then(setWorkspaces)
-                  .catch(console.error);
+                try {
+                  await addWorkspaceCmd(path);
+                  const workspaces = await getWorkspaceCmd();
+                  setWorkspaces(workspaces);
+                } catch (e) {
+                  console.error(e);
+                }
               }}
             >
               OK
