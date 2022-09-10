@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import AddIcon from './AddIcon';
+import AddIcon from '@/components/icons/AddIcon';
 
 type Props = {
   onClick: () => void;
