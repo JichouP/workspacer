@@ -15,7 +15,13 @@ pub fn save(repository: &impl ConfigRepository, config: &Config) -> Result<()> {
 }
 
 pub fn load_workspace(repository: &impl ConfigRepository) -> Result<Vec<PathBuf>> {
-    let config = load(repository)?;
+    let config = match load(repository) {
+        Ok(config) => config,
+        Err(_) => match save_workspace(repository, vec![]) {
+            Ok(_) => load(repository)?,
+            Err(e) => return Err(e),
+        },
+    };
 
     Ok(config.workspaces)
 }
