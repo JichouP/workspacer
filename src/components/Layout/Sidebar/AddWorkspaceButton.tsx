@@ -11,7 +11,9 @@ const AddWorkspaceButton: FC<Props> = () => {
       htmlFor="add-workspace-modal"
       className="modal-button btn btn-ghost flex w-full flex-row items-center justify-center normal-case"
     >
-      <AddIcon></AddIcon>
+      <div className="h-6 w-6">
+        <AddIcon></AddIcon>
+      </div>
       <span className="m-2 text-lg">Add Workspace</span>
     </label>
   );
