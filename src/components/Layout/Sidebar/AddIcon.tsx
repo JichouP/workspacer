@@ -1,7 +1,7 @@
 const AddIcon = () => {
   return (
     <svg
-      className="h-8 w-8"
+      className="h-6 w-6"
       fill="none"
       stroke="currentColor"
       viewBox="0 0 24 24"
