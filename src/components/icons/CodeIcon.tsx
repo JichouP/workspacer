@@ -1,6 +1,6 @@
 const CodeIcon = () => {
   return (
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="5 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <mask
         id="mask0"
         mask-type="alpha"
