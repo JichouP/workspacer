@@ -8,7 +8,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
       <Sidebar></Sidebar>
       <div className="flex h-screen flex-1 flex-col">
         <Header></Header>
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 overflow-y-scroll">{children}</div>
       </div>
     </div>
   );
