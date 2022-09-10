@@ -25,9 +25,14 @@ impl From<LanguageStat> for Stat {
 }
 
 fn is_system_dir<P: AsRef<Path>>(path: P) -> bool {
-    ["$RECYCLE.BIN", "Recovery", "System Volume Information"]
-        .into_iter()
-        .any(|p| path.as_ref().to_str().unwrap().contains(p))
+    [
+        "$RECYCLE.BIN",
+        "Recovery",
+        "System Volume Information",
+        ".DS_Store",
+    ]
+    .into_iter()
+    .any(|p| path.as_ref().to_str().unwrap().contains(p))
 }
 
 fn is_dot_dir<P: AsRef<Path>>(path: P) -> bool {
