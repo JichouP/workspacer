@@ -2,11 +2,15 @@ use std::process::Command;
 
 #[command]
 pub fn launch_code(path: String) -> Result<(), String> {
-    let child = Command::new("cmd").args(["/C", "code", &path]).spawn();
-    // let child = Command::new("code").arg(path).spawn();
+    let shell = match cfg!(windows) {
+        true => "cmd",
+        false => "sh",
+    };
 
-    match child {
-        Ok(_) => Ok(()),
-        Err(e) => Err(e.to_string()),
-    }
+    Command::new(shell)
+        .args(["/C", "code", &path])
+        .spawn()
+        .map_err(|e| e.to_string())?;
+
+    Ok(())
 }
