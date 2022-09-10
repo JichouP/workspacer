@@ -1,5 +1,8 @@
 import currentWorkspaceState from '@/atoms/currentWorkspaceState';
+import isLoadingState from '@/atoms/isLoadingState';
+import statsState from '@/atoms/statsState';
 import workspacesState from '@/atoms/workspacesState';
+import getStatsCmd from '@/cmds/getStatsCmd';
 import { FC } from 'react';
 import { useRecoilState } from 'recoil';
 import Logo from './Logo';
@@ -11,6 +14,8 @@ import WorkspaceButton from './Sidebar/WorkspaceButton';
 const Sidebar: FC = () => {
   const [workspaces] = useRecoilState(workspacesState);
   const [, setCurrentWorkspace] = useRecoilState(currentWorkspaceState);
+  const [, setStats] = useRecoilState(statsState);
+  const [, setIsLoading] = useRecoilState(isLoadingState);
 
   return (
     <div className="flex w-96 flex-col items-center justify-between bg-base-200">
@@ -25,7 +30,15 @@ const Sidebar: FC = () => {
           <WorkspaceButton
             key={v}
             path={v}
-            onClick={() => setCurrentWorkspace(v)}
+            onClick={() => {
+              setCurrentWorkspace(v);
+              setStats([]);
+              setIsLoading(true);
+              getStatsCmd(v)
+                .then(setStats)
+                .then(() => setIsLoading(false))
+                .catch(console.error);
+            }}
           ></WorkspaceButton>
         ))}
         <AddWorkspaceButton onClick={() => null}></AddWorkspaceButton>
