@@ -6,12 +6,11 @@ type Props = {
   stats: Stats;
 };
 
-const LanguagePercentageBar: FC<Props> = ({ stats }) => {
-  const stat = stats[1];
+const LanguagePercentageBar: FC<Props> = ({ stats: [, stats] }) => {
   return (
     <div className="flex h-2 w-96 overflow-hidden rounded-md">
       <>
-        {stat
+        {stats
           .map((v) => ({
             ...v,
             percentage: Math.round(v.percentage * 10) / 10,
@@ -26,7 +25,7 @@ const LanguagePercentageBar: FC<Props> = ({ stats }) => {
               }}
             ></div>
           ))}
-        {stat.length === 0 && <div className="w-full bg-gray-600"></div>}
+        {stats.length === 0 && <div className="w-full bg-gray-600"></div>}
       </>
     </div>
   );
