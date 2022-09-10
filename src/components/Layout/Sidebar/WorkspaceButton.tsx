@@ -7,11 +7,16 @@ type Props = {
 
 const WorkspaceButton: FC<Props> = ({ path, onClick }) => {
   return (
-    <button className="btn btn-ghost w-full p-4" onClick={onClick}>
-      <span className="w-full overflow-hidden overflow-ellipsis normal-case">
-        {path}
-      </span>
-    </button>
+    <pre className="tooltip w-full" data-tip={path}>
+      <button
+        className="btn btn-ghost w-full p-4 normal-case"
+        onClick={onClick}
+      >
+        <span className="w-full overflow-hidden overflow-ellipsis ">
+          <pre>{path}</pre>
+        </span>
+      </button>
+    </pre>
   );
 };
 
