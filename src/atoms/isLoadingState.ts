@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 const isLoadingState = atom<boolean>({
-  key: 'currentWorkspaceState',
+  key: 'isLoadingState',
   default: false,
 });
 
