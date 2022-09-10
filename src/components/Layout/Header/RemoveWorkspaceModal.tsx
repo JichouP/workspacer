@@ -20,14 +20,12 @@ const RemoveWorkspaceModal = () => {
         <div className="modal-box">
           <h3 className="text-xl font-bold">Remove Workspace</h3>
           <div className="ml-4 mt-2">
-            <span>Do you really want to remove it?</span>
-            <br />
-            <span>
-              ( It will be removed from the list, but the workspace itself{' '}
-              <span className="font-bold">will NOT</span> be deleted. )
-            </span>
+            <p>
+              Do you really want to remove the following workspace from the
+              list?
+            </p>
+            <pre className="mx-2 overflow-hidden">{currentWorkspace}</pre>
           </div>
-          <pre>{currentWorkspace}</pre>
           <div className="modal-action">
             <label htmlFor="remove-workspace-modal" className="btn">
               Cancel
