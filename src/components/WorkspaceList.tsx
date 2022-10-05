@@ -14,7 +14,6 @@ import LanguagePercentageList from './WorkspaceList/LanguagePercentageList';
 const WorkspaceList = () => {
   const [currentWorkspace] = useRecoilState(currentWorkspaceState);
   const [stats] = useRecoilState(statsState);
-  console.log(stats);
   const [isLoading] = useRecoilState(isLoadingState);
   if (isLoading) {
     return (
