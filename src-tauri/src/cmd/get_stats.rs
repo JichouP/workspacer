@@ -49,26 +49,23 @@ fn is_dot_dir<P: AsRef<Path>>(path: P) -> bool {
 
 #[command]
 pub fn get_stats(path: String) -> Result<Vec<(String, Vec<Stat>)>, String> {
-    let dirs = match fs::read_dir(path) {
-        Ok(v) => v,
-        Err(e) => return Err(e.to_string()),
-    };
-
-    let dirs = dirs
+    let dirs = fs::read_dir(path)
+        .map_err(|e| e.to_string())?
         .filter(|dir| {
             let path = dir.as_ref().unwrap().path();
             !is_system_dir(&path) && !is_dot_dir(&path)
         })
         .filter(|dir| dir.as_ref().unwrap().metadata().unwrap().is_dir())
-        .map(|dir| {
-            let dir = dir.unwrap();
+        .filter_map(|dir| {
+            let dir = dir.ok()?;
             let path = dir.path().to_string_lossy().to_string();
             let stat: Vec<Stat> = languatage::get_stat(path)
+                .ok()?
                 .into_iter()
                 .map(|stat| Stat::from(stat))
                 .collect();
 
-            (dir.file_name().to_string_lossy().to_string(), stat)
+            Some((dir.file_name().to_string_lossy().to_string(), stat))
         })
         .collect();
 
