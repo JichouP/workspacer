@@ -49,7 +49,7 @@ fn is_dot_dir<P: AsRef<Path>>(path: P) -> bool {
 
 #[command]
 pub fn get_stats(path: String) -> Result<Vec<(String, Vec<Stat>)>, String> {
-    let dirs = fs::read_dir(path)
+    let mut dirs: Vec<(String, Vec<Stat>)> = fs::read_dir(path)
         .map_err(|e| e.to_string())?
         .filter(|dir| {
             let path = dir.as_ref().unwrap().path();
@@ -68,6 +68,8 @@ pub fn get_stats(path: String) -> Result<Vec<(String, Vec<Stat>)>, String> {
             Some((dir.file_name().to_string_lossy().to_string(), stat))
         })
         .collect();
+
+    dirs.sort_by_key(|(a, _)| a.to_lowercase());
 
     Ok(dirs)
 }
