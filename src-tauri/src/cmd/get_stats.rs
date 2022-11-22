@@ -62,7 +62,7 @@ pub fn get_stats(path: String) -> Result<Vec<(String, Vec<Stat>)>, String> {
             let stat: Vec<Stat> = languatage::get_stat(path)
                 .ok()?
                 .into_iter()
-                .map(|stat| Stat::from(stat))
+                .map(Stat::from)
                 .collect();
 
             Some((dir.file_name().to_string_lossy().to_string(), stat))

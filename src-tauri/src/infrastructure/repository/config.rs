@@ -35,7 +35,7 @@ impl ConfigRepository for ConfigRepositoryImpl {
     fn save(&self, config: &Config) -> Result<()> {
         let config_string: String = json!(config).to_string();
         if !&self.config_filepath.exists() {
-            fs::create_dir_all(&self.config_filepath.parent().unwrap())?;
+            fs::create_dir_all(self.config_filepath.parent().unwrap())?;
         };
         fs::write(&self.config_filepath, config_string)?;
 
