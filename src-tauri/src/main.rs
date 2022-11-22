@@ -20,7 +20,7 @@ mod usecase;
 fn main() -> Result<()> {
     tauri::Builder::default()
         .setup(|app| {
-            let app_dir = app.path_resolver().app_dir().unwrap();
+            let app_dir = app.path_resolver().app_config_dir().unwrap();
 
             let config_repository = ConfigRepositoryImpl::new(app_dir);
 
